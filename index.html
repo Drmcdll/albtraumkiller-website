@@ -218,11 +218,14 @@
             card.classList.add('active-card');
             targetElement.classList.add('active');
 
-            // Zum übergeordneten Container scrollen
-            caseStudyContainer.scrollIntoView({
-                behavior: 'smooth', // Sanftes Scrollen
-                block: 'start'      // An den oberen Rand des Viewports scrollen
-            });
+            // Zum Element scrollen, nachdem es sich "ausgefahren" hat
+            // Eine kleine Verzögerung kann hier helfen, falls die Animation das Scrollen stört
+            setTimeout(() => {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth', // Sanftes Scrollen
+                    block: 'start'      // An den oberen Rand des Viewports scrollen
+                });
+            }, 50); // Eine kleine Verzögerung von 50ms
         }
 
         // Standardmäßig die erste Karte beim Laden aktivieren und anzeigen
