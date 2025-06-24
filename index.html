@@ -176,21 +176,25 @@
 
     <footer><p>&copy; 2025 Albtraum KI-ller | Eine Dienstleistung von Albtraumkiller.de | david.rodriguez@albtraumkiller.de  | <a href="#">Impressum</a></p></footer>
 
-    <script>
+   <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Hamburger-Menü Logik
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
         navLinks.addEventListener('click', () => { navLinks.classList.remove('active'); });
 
+        // CEO-Support Checkbox Logik
         const ceoSupportCheckbox = document.getElementById('ceo-support');
         const ceoEmailGroup = document.getElementById('ceo-email-group');
         ceoSupportCheckbox.addEventListener('change', function() { ceoEmailGroup.classList.toggle('visible', this.checked); });
 
+        // Anwendungsfall-Logik
         const nightmareCards = document.querySelectorAll('.nightmare-card');
         const caseStudyContainer = document.getElementById('case-study-container');
         
-        // Initialer HTML-Inhalt für die Case Studies
+        // Initialer HTML-Inhalt für die Case Studies (Dies muss nur einmal beim Laden passieren)
+        // Stelle sicher, dass die IDs hier genau mit den data-target Attributen der Karten übereinstimmen
         caseStudyContainer.innerHTML = `
             <section id="case-study-reporting" class="case-study-wrapper"><div class="case-study-content"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" alt="Graphen" class="case-study-image"><div class="case-study-text"><h2 style="border:0; margin-bottom:1rem;">Anwendungsfall: Der Reporting-Albtraum</h2><h3 class="problem">Der Albtraum</h3><p>Stundenlanges, manuelles Sammeln von Daten aus verschiedenen Quellen für wöchentliche Reports.</p><h3 class="solution">Der Lösungsansatz mit KI</h3><p>Ein KI-Agent aggregiert, analysiert und visualisiert die Daten automatisch und versendet den fertigen Report. <strong>Ergebnis: Stunden an Arbeit werden zu null.</strong></p></div></div></section>
             <section id="case-study-privacy" class="case-study-wrapper"><div class="case-study-content"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Datensicherheit" class="case-study-image"><div class="case-study-text"><h2 style="border:0; margin-bottom:1rem;">Anwendungsfall: Datenvertraulichkeit</h2><h3 class="problem">Der Albtraum</h3><p>Mitarbeiter wollen KI nutzen, dürfen aber keine sensiblen Firmendaten in US-Clouds laden (DSGVO, Compliance).</p><h3 class="solution">Der Lösungsansatz mit KI</h3><p>Wir implementieren leistungsstarke Open-Source KI auf Ihren eigenen Servern oder in einer deutschen Cloud. <strong>Ergebnis: KI-Potenzial voll ausschöpfen, ohne Datenhoheit zu verlieren.</strong></p></div></div></section>
@@ -200,6 +204,7 @@
             <section id="case-study-inbox" class="case-study-wrapper"><div class="case-study-content"><img src="email-chaos.jpg" alt="Posteingang" class="case-study-image"><div class="case-study-text"><h2 style="border:0; margin-bottom:1rem;">Anwendungsfall: E-Mail-Flut sortieren</h2><h3 class="problem">Der Albtraum</h3><p>Ein zentraler Posteingang quillt über. Das manuelle Sichten und Weiterleiten ist ein Vollzeitjob.</p><h3 class="solution">Der Lösungsansatz mit KI</h3><p>Eine KI klassifiziert E-Mails nach Absicht und Tonalität, leitet sie intelligent weiter und erstellt Antwortvorschläge. <strong>Ergebnis: Antwortzeiten um 90% reduziert.</strong></p></div></div></section>
         `;
         
+        // Nach dem Setzen von innerHTML, müssen die Elemente neu gefunden werden
         const reloadedCaseStudyWrappers = document.querySelectorAll('.case-study-wrapper');
         const firstCard = nightmareCards[0];
 
@@ -220,6 +225,7 @@
 
             // Zum Element scrollen, nachdem es sich "ausgefahren" hat
             // Eine kleine Verzögerung kann hier helfen, falls die Animation das Scrollen stört
+            // Der scroll-padding-top im CSS sollte die feste Nav-Leiste berücksichtigen
             setTimeout(() => {
                 targetElement.scrollIntoView({
                     behavior: 'smooth', // Sanftes Scrollen
@@ -228,7 +234,7 @@
             }, 50); // Eine kleine Verzögerung von 50ms
         }
 
-        // Standardmäßig die erste Karte beim Laden aktivieren und anzeigen
+        // Standardmäßig die erste Karte beim Laden aktivieren und anzeigen und scrollen
         if (firstCard) {
             showCaseStudyAndScroll(firstCard);
         }
@@ -238,7 +244,7 @@
             card.addEventListener('click', function() {
                 // Nur scrollen, wenn die geklickte Karte nicht bereits aktiv ist
                 if (!this.classList.contains('active-card')) {
-                    showCaseStudyAndScroll(this);
+                    showCaseStudyAndScroll(this); // Diese Funktion aufrufen
                 }
             });
         });
