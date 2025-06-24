@@ -218,8 +218,8 @@
             card.classList.add('active-card');
             targetElement.classList.add('active');
 
-            // Zum Element scrollen
-            targetElement.scrollIntoView({
+            // Zum übergeordneten Container scrollen
+            caseStudyContainer.scrollIntoView({
                 behavior: 'smooth', // Sanftes Scrollen
                 block: 'start'      // An den oberen Rand des Viewports scrollen
             });
@@ -233,7 +233,8 @@
         // Event Listener für jede Albtraum-Karte
         nightmareCards.forEach(card => {
             card.addEventListener('click', function() {
-                if (!this.classList.contains('active-card')) { // Nur scrollen, wenn es noch nicht die aktive Karte ist
+                // Nur scrollen, wenn die geklickte Karte nicht bereits aktiv ist
+                if (!this.classList.contains('active-card')) {
                     showCaseStudyAndScroll(this);
                 }
             });
