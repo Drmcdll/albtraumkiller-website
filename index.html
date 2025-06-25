@@ -164,12 +164,30 @@
                 <p>Beschreiben Sie kurz, welche Aufgaben Sie täglich am meisten ärgern. Wir melden uns mit einem ersten, unverbindlichen Lösungsansatz.</p>
             </div>
             <div class="form-container">
-                <form action="https://formspree.io/f/mpwryvjg" method="POST">
-                    <div class="form-group"><label for="albtraum-beschreibung">Mein Albtraum ist:</label><textarea id="albtraum-beschreibung" name="albtraum_beschreibung" placeholder="z.B. Jeden Tag muss ich manuell 50 Kundenanfragen aus unserem Postfach in unser CRM-System kopieren..." required></textarea></div>
-                    <div class="form-group checkbox-group"><input type="checkbox" id="ceo-support" name="ceo_support"><label for="ceo-support" style="margin-bottom: 0;">Mein CEO hat mir Unterstützung für die Lösung meines Albtraumes zugesagt.</label></div>
-                    <div id="ceo-email-group"><div class="form-group"><label for="ceo-email">Bitte tragen Sie die E-Mail Ihres CEOs ein:</label><input type="email" id="ceo-email" name="ceo_email" placeholder="ceo@firma.de"></div></div>
-                    <button type="submit" class="submit-btn">Albtraum zur Eliminierung einreichen</button>
-                </form>
+               <form action="https://formspree.io/f/mpwryvjg" method="POST">
+    <div class="form-group">
+        <label for="albtraum-beschreibung">Mein Albtraum ist:</label>
+        <textarea id="albtraum-beschreibung" name="albtraum_beschreibung" placeholder="z.B. Jeden Tag muss ich manuell 50 Kundenanfragen aus unserem Postfach in unser CRM-System kopieren..." required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="sender-email">Ihre E-Mail-Adresse:</label>
+        <input type="email" id="sender-email" name="sender_email" placeholder="ihre@firma.de" required>
+    </div>
+
+    <div class="form-group checkbox-group">
+        <input type="checkbox" id="ceo-support" name="ceo_support">
+        <label for="ceo-support" style="margin-bottom: 0;">Mein CEO hat mir Unterstützung für die Lösung meines Albtraumes zugesagt.</label>
+    </div>
+
+    <div id="ceo-email-group">
+        <div class="form-group">
+            <label for="ceo-email">Bitte tragen Sie die E-Mail Ihres CEOs ein:</label>
+            <input type="email" id="ceo-email" name="ceo_email" placeholder="ceo@firma.de">
+        </div>
+    </div>
+    <button type="submit" class="submit-btn">Albtraum zur Eliminierung einreichen</button>
+</form>
             </div>
         </section>
     </main>
