@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -71,12 +70,16 @@
         .case-study-text .problem { color: #ff6b6b; }
         .case-study-text .solution { color: #4dff94; }
         
-        #kontakt { margin-top: 60px; }
+        /* Form Styling */
         .form-container { background: var(--primary-color); padding: 40px; border-radius: 8px; border-top: 5px solid var(--accent-color); margin-top: 2rem; }
         .form-group { margin-bottom: 1.5rem; }
         label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
-        textarea, input[type="email"] { width: 100%; padding: 15px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 5px; color: var(--text-color); font-family: 'Poppins', sans-serif; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
-        textarea:focus, input[type="email"]:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 10px var(--glow-color); }
+        textarea, input[type="email"], input[type="text"], input[type="file"] { 
+            width: 100%; padding: 15px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 5px; color: var(--text-color); font-family: 'Poppins', sans-serif; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; 
+        }
+        textarea:focus, input[type="email"]:focus, input[type="text"]:focus, input[type="file"]:focus { 
+            outline: none; border-color: var(--accent-color); box-shadow: 0 0 10px var(--glow-color); 
+        }
         textarea { min-height: 150px; resize: vertical; }
         .checkbox-group { display: flex; align-items: center; gap: 10px; }
         input[type="checkbox"] { width: 1.2em; height: 1.2em; accent-color: var(--accent-color); }
@@ -84,15 +87,29 @@
         #ceo-email-group.visible { max-height: 120px; opacity: 1; margin-top: 1.5rem; }
         .submit-btn { display: block; width: 100%; padding: 15px; background: var(--accent-color); color: var(--bg-color); border: none; border-radius: 5px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: background-color 0.3s, transform 0.3s; margin-top: 2rem; }
         .submit-btn:hover { background-color: #fff; color: #000; transform: scale(1.02); }
-        footer { text-align: center; padding: 40px 20px; margin-top: 60px; border-top: 1px solid var(--border-color); color: var(--text-muted); }
         
-        /* New styles for the podcast section */
-        #podcast {
-            padding-top: 80px; /* Adjust padding to account for sticky nav */
-            margin-top: -60px; /* Negative margin to pull content up */
+        /* Collapsible sections styling (Podcast and Karriere) */
+        .collapsible-section {
+            padding-top: 0; 
+            padding-bottom: 0; 
+            margin-top: -60px; /* Adjust for sticky nav */
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 0.6s ease-in-out, max-height 0.8s ease-in-out, padding 0.8s ease-in-out;
             text-align: center;
         }
 
+        /* Specific padding for collapsible sections when active */
+        #podcast.collapsible-section.active,
+        #karriere.collapsible-section.active {
+            opacity: 1;
+            max-height: 2000px; /* Sufficiently large to contain content */
+            padding-top: 80px; /* Match existing section padding */
+            padding-bottom: 40px; /* Standard section bottom padding */
+        }
+
+        /* Styles for Podcast section content */
         .podcast-episode {
             background: var(--primary-color);
             padding: 30px;
@@ -111,27 +128,27 @@
             color: var(--accent-color);
             margin-bottom: 0.5rem;
             text-align: center;
-            width: 100%; /* Ensure title spans full width */
+            width: 100%; 
         }
 
         .podcast-episode p {
             color: var(--text-muted);
             text-align: left;
-            width: 100%; /* Ensure description spans full width */
+            width: 100%; 
         }
         
         .podcast-episode iframe {
-            width: 100%; /* Ensure iframe is responsive */
-            max-width: 600px; /* Optional: limit max width for better readability */
-            margin: 0 auto; /* Center the iframe */
+            width: 100%; 
+            max-width: 600px; 
+            margin: 0 auto; 
         }
 
         .podcast-links {
             display: flex;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            flex-wrap: wrap; 
             gap: 15px;
             margin-top: 15px;
-            justify-content: center; /* Center buttons */
+            justify-content: center; 
             width: 100%;
         }
 
@@ -142,8 +159,8 @@
             border-radius: 5px;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            text-align: center; /* Center text in button */
-            white-space: nowrap; /* Prevent text wrapping inside buttons */
+            text-align: center; 
+            white-space: nowrap; 
         }
 
         .podcast-links a:hover {
@@ -152,49 +169,47 @@
             transform: translateY(-2px);
         }
 
-        .podcast-list {
-            margin-top: 40px;
-            text-align: left;
+        /* Styles for Contact section (always visible) */
+        #kontakt {
+            padding-top: 80px; /* Standard padding for always visible sections */
+            margin-top: -60px; /* Adjust for sticky nav */
+            text-align: center;
         }
 
-        .podcast-list h3 {
-            font-size: 2rem;
-            color: #fff;
-            border-bottom: 2px solid var(--text-muted);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        /* Footer specific styles */
+        footer { 
+            text-align: center; 
+            padding: 40px 20px; 
+            margin-top: 60px; 
+            border-top: 1px solid var(--border-color); 
+            color: var(--text-muted); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 15px; 
         }
 
-        .podcast-item {
-            background: var(--primary-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 3px solid var(--text-muted);
-            transition: border-color 0.3s ease;
+        footer .footer-links {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px; 
+            padding: 0;
+            margin-bottom: 15px; 
         }
 
-        .podcast-item:hover {
-            border-color: var(--accent-color);
-        }
-
-        .podcast-item h4 {
-            font-size: 1.4rem;
-            color: var(--text-color);
-            margin-bottom: 5px;
-        }
-
-        .podcast-item p {
-            font-size: 0.9rem;
+        footer .footer-links a {
             color: var(--text-muted);
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
-        .podcast-item a {
-            display: inline-block;
-            margin-top: 10px;
-            font-weight: 600;
+        footer .footer-links a:hover {
+            color: var(--accent-color);
         }
-        
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .nav-links { display: none; position: absolute; top: var(--nav-height); left: 0; background-color: var(--primary-color); width: 100%; flex-direction: column; text-align: center; gap: 0; }
             .nav-links.active { display: flex; }
@@ -215,11 +230,11 @@
                 font-size: 1.5rem;
             }
             .podcast-links {
-                flex-direction: column; /* Stack buttons vertically on mobile */
-                align-items: center; /* Center stacked buttons */
+                flex-direction: column; 
+                align-items: center; 
             }
             .podcast-links a {
-                width: 80%; /* Make buttons wider on mobile */
+                width: 80%; 
             }
         }
     </style>
@@ -230,8 +245,6 @@
             <li><a href="#wir">WIR</a></li>
             <li><a href="#killen">KILLEN</a></li>
             <li><a href="#albtraeume">ALBTRÄUME</a></li>
-            <li><a href="#podcast">PODCAST</a></li> <!-- New podcast link -->
-            <li><a href="#kontakt">KONTAKT</a></li>
         </ul>
         <div class="hamburger">
             <div class="line"></div>
@@ -275,17 +288,47 @@
             <div class="nightmare-grid">
                  <div class="nightmare-card" data-target="#case-study-reporting"><h3>Manuelle Reporterstellung</h3><p>Stundenlanges Kopieren von Daten aus 5 verschiedenen Quellen in eine einzige PowerPoint-Präsentation. Jede Woche.</p></div>
                 <div class="nightmare-card" data-target="#case-study-privacy"><h3>Datenvertraulichkeit & KI</h3><p>Mitarbeiter dürfen keine US-Cloud-KIs nutzen, da vertrauliche Kundendaten das Unternehmen nicht verlassen dürfen.</p></div>
-                <div class="nightmare-card" data-target="#case-study-recruiting"><h3>Das Recruiting-Chaos</h3><p>Hunderte Bewerbungen sichten, unpassende Kandidaten aussortieren und Interviews koordinieren frisst die Zeit der Personalabteilung.</p></div>
+                <div class="nightmare-card" data-target="#case-study-recruiting"><h3>Das Recruiting-Chaos</h3><p>Die HR-Abteilung ertrinkt in Bewerbungen und verbringt Tage mit dem manuellen Sichten von Lebensläufen.</p></div>
                 <div class="nightmare-card" data-target="#case-study-data-entry"><h3>Daten-Eintipp-Hölle</h3><p>Manuelles Übertragen von Daten aus Rechnungen oder Formularen in digitale Systeme ist langsam und fehleranfällig.</p></div>
-                <div class="nightmare-card" data-target="#case-study-meetings"><h3>Meeting-Protokolle</h3><p>Gleichzeitig zuhören, verstehen und mitschreiben, nur um danach alles mühsam aufzubereiten.</p></div>
-                <div class="nightmare-card" data-target="#case-study-inbox"><h3>E-Mail-Flut sortieren</h3><p>Täglich hunderte E-Mails manuell sichten, kategorisieren und an die richtigen Abteilungen weiterleiten.</p></div>
+                <div class="nightmare-card" data-target="#case-study-meetings"><h3>Meeting-Protokolle</h3><p>Gleichzeitig zuhören, verstehen und protokollieren ist unmöglich. Wichtige Details und To-dos gehen verloren.</p></div>
+                <div class="nightmare-card" data-target="#case-study-inbox"><h3>E-Mail-Flut sortieren</h3><p>Ein zentraler Posteingang quillt über. Das manuelle Sichten und Weiterleiten ist ein Vollzeitjob.</p></div>
             </div>
         </section>
 
         <div id="case-study-container"></div>
 
-        <!-- New Podcast Section -->
-        <section id="podcast">
+        <!-- Career Section (Collapsible) -->
+        <section id="karriere" class="collapsible-section">
+            <div style="text-align:center;">
+                <h2>Karriere bei Albtraum KI-ller</h2>
+                <p>Sie sind ein KI-Experte oder möchten einer werden? Senden Sie uns Ihre Initiativbewerbung!</p>
+            </div>
+            <div class="form-container">
+               <form action="https://formspree.io/f/mpwryvjg" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="career-name">Ihr Name:</label>
+                        <input type="text" id="career-name" name="career_name" placeholder="Ihr Vorname Nachname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="career-email">Ihre E-Mail-Adresse:</label>
+                        <input type="email" id="career-email" name="career_email" placeholder="ihre@email.de" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="career-message">Ihre Nachricht / Kurzbewerbung:</label>
+                        <textarea id="career-message" name="career_message" placeholder="Beschreiben Sie kurz Ihre Fähigkeiten und warum Sie zu uns passen." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="career-cv">Lebenslauf hochladen (PDF, optional):</label>
+                        <input type="file" id="career-cv" name="career_cv" accept=".pdf">
+                    </div>
+                    <button type="submit" class="submit-btn">Bewerbung einreichen</button>
+                </form>
+            </div>
+        </section>
+        <!-- End Career Section -->
+
+        <!-- Podcast Section (Collapsible) -->
+        <section id="podcast" class="collapsible-section">
             <h2>Unser Podcast: "Albtraum KI-ller – Die Show"</h2>
             <p>Hören Sie rein in unsere neuesten Episoden, in denen wir die größten Unternehmensalbträume unter die Lupe nehmen und zeigen, wie KI sie ein für alle Mal eliminiert.</p>
             
@@ -304,31 +347,10 @@
                     <!-- Füge hier weitere Links zu anderen Plattformen hinzu -->
                 </div>
             </div>
-
-            <!-- Removed the 'Bisherige Episoden' section as requested -->
-            <!--
-            <div class="podcast-list">
-                <h3>Bisherige Episoden</h3>
-                <div class="podcast-item">
-                    <h4>Episode 1: "Datenvertraulichkeit und KI: Geht das?"</h4>
-                    <p>Ein tiefer Einblick in die Implementierung von KI, während Ihre Daten sicher und in Deutschland bleiben. Der Albtraum von Datenlecks wird zum Traum von voller Kontrolle.</p>
-                    <a href="https://open.spotify.com/episode/[ID_EPISODE_1]" target="_blank">Jetzt anhören</a>
-                </div>
-                <div class="podcast-item">
-                    <h4>Episode 2: "Das Recruiting-Chaos adé: KI findet Ihre Top-Talente"</h4>
-                    <p>Wie KI die Personalabteilung revolutioniert, indem sie Hunderte von Bewerbungen in Minuten sichtet und die besten Kandidaten identifiziert.</p>
-                    <a href="https://open.spotify.com/episode/[ID_EPISODE_2]" target="_blank">Jetzt anhören</a>
-                </div>
-                <div class="podcast-item">
-                    <h4>Episode 3: "Meeting-Protokolle leicht gemacht: Der KI-Assistent für Ihr Team"</h4>
-                    <p>Nie wieder Zeit mit manuellen Meeting-Protokollen verschwenden. Erfahren Sie, wie KI Ihre Besprechungen transkribiert, zusammenfasst und To-Dos extrahiert.</p>
-                    <a href="https://open.spotify.com/episode/[ID_EPISODE_3]" target="_blank">Jetzt anhören</a>
-                </div>
-            </div>
-            -->
         </section>
-        <!-- End New Podcast Section -->
+        <!-- End Podcast Section -->
 
+        <!-- Contact Section (Always visible) -->
         <section id="kontakt">
             <div style="text-align:center;">
                 <h2>Lassen Sie uns Ihren Albtraum eliminieren</h2>
@@ -361,9 +383,17 @@
                 </form>
             </div>
         </section>
+        <!-- End Contact Section -->
     </main>
 
-  <footer><p>&copy; 2025 Albtraum KI-ller | Eine Dienstleistung von David Rodriguez Consulting | david.rodriguez@albtraumkiller.de  | <a href="Impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutzerklärung</a></p></footer>
+  <footer>
+    <ul class="footer-links">
+        <li><a href="#podcast">Podcast</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#karriere">Karriere</a></li>
+    </ul>
+    <p>&copy; 2025 Albtraum KI-ller | Eine Dienstleistung von David Rodriguez Consulting | david.rodriguez@albtraumkiller.de  | <a href="Impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutzerklärung</a></p>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -383,8 +413,6 @@
         const caseStudyContainer = document.getElementById('case-study-container');
         
         // Initialer HTML-Inhalt für die Case Studies (Dies muss nur einmal beim Laden passieren)
-        // Image for data-entry-hell: [Image of documents being sorted and entered into a computer]
-        // Image for email-chaos: [Image of an overflowing email inbox]
         caseStudyContainer.innerHTML = `
             <section id="case-study-reporting" class="case-study-wrapper"><div class="case-study-content"><img src="1-reporting.JPG" alt="Graphen" class="case-study-image"><div class="case-study-text"><h2 style="border:0; margin-bottom:1rem;">Anwendungsfall: Der Reporting-Albtraum</h2><h3 class="problem">Der Albtraum</h3><p>Stundenlanges, manuelles Sammeln von Daten aus verschiedenen Quellen für wöchentliche Reports.</p><h3 class="solution">Der Lösungsansatz mit KI</h3><p>Ein KI-Agent aggregiert, analysiert und visualisiert die Daten automatisch und versendet den fertigen Report. <strong>Ergebnis: Stunden an Arbeit werden zu null.</strong></p></div></div></section>
             <section id="case-study-privacy" class="case-study-wrapper"><div class="case-study-content"><img src="2-ki.JPG" alt="Datensicherheit" class="case-study-image"><div class="case-study-text"><h2 style="border:0; margin-bottom:1rem;">Anwendungsfall: Datenvertraulichkeit</h2><h3 class="problem">Der Albtraum</h3><p>Mitarbeiter wollen KI nutzen, dürfen aber keine sensiblen Firmendaten in US-Clouds laden (DSGVO, Compliance).</p><h3 class="solution">Der Lösungsansatz mit KI</h3><p>Wir implementieren leistungsstarke Open-Source KI auf Ihren eigenen Servern oder in einer deutschen Cloud. <strong>Ergebnis: KI-Potenzial voll ausschöpfen, ohne Datenhoheit zu verlieren.</strong></p></div></div></section>
@@ -443,39 +471,67 @@
             });
         });
 
-        // Smooth scroll for nav links (including new podcast link)
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
+        // Smooth scroll for nav links and footer links
+        document.querySelectorAll('.main-nav a, .footer-links a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
-                // Remove active class from all nav links
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                });
-                // Add active class to the clicked link
-                this.classList.add('active');
 
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
+                // Hide only *collapsible* sections first
+                document.querySelectorAll('.collapsible-section').forEach(section => {
+                    if (section.id !== targetId.substring(1)) { // Don't hide the target section
+                        section.classList.remove('active');
+                    }
+                });
+
+                // Toggle active class for the target collapsible section
+                if (targetElement && targetElement.classList.contains('collapsible-section')) {
+                    targetElement.classList.toggle('active');
+                }
+
+                // If the clicked link is in the main navigation, update active class there
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                if (this.closest('.main-nav')) {
+                    this.classList.add('active');
+                }
+
+                // Scroll to the target element if it's visible or about to be visible
+                if (targetElement) {
+                    setTimeout(() => { // Small delay to allow max-height transition
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 500); // Adjust delay if needed
+                }
+                
                 // Close mobile menu if open
                 navLinks.classList.remove('active');
-
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
             });
         });
 
         // Set active class for initial load based on URL hash (if any)
+        // And ensure collapsible sections are hidden on load
         const initialHash = window.location.hash;
+        
+        // Hide all collapsible sections on initial load
+        document.querySelectorAll('.collapsible-section').forEach(section => {
+            section.classList.remove('active');
+        });
+
         if (initialHash) {
-            const initialNavLink = document.querySelector(`.nav-links a[href="${initialHash}"]`);
+            const initialNavLink = document.querySelector(`.main-nav a[href="${initialHash}"]`);
             if (initialNavLink) {
                 initialNavLink.classList.add('active');
+            }
+            // If hash points to a collapsible section, show it
+            const initialCollapsibleSection = document.querySelector(initialHash);
+            if (initialCollapsibleSection && initialCollapsibleSection.classList.contains('collapsible-section')) {
+                initialCollapsibleSection.classList.add('active');
             }
         } else {
             // Default to 'WIR' as active if no hash
@@ -485,14 +541,15 @@
             }
         }
 
-        // Add scroll event listener to update active nav link
+        // Add scroll event listener to update active nav link for *main* sections and Kontakt
         window.addEventListener('scroll', () => {
             let currentActiveSection = '';
-            const sections = document.querySelectorAll('section[id]');
+            // Only consider sections that are NOT collapsible (i.e., WIR, KILLEN, ALBTRÄUME, KONTAKT)
+            const sections = document.querySelectorAll('section:not(#podcast):not(#karriere)[id]');
             const navHeight = document.querySelector('.main-nav').offsetHeight;
 
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - navHeight - 1; // Adjust for sticky nav height
+                const sectionTop = section.offsetTop - navHeight - 1; 
                 const sectionHeight = section.clientHeight;
                 if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
                     currentActiveSection = section.id;
@@ -501,6 +558,7 @@
 
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.classList.remove('active');
+                // Ensure only main nav links are activated by scroll
                 if (link.getAttribute('href').includes(currentActiveSection)) {
                     link.classList.add('active');
                 }
