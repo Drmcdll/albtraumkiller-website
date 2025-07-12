@@ -52,7 +52,7 @@
         #wir .team-link { display: inline-block; background: var(--accent-color); color: var(--bg-color); padding: 10px 20px; border-radius: 5px; font-weight: 600; margin-top: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         #wir .team-link:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         
-        #killen, #karriere, #kontakt { padding-top: 80px; margin-top: -60px; text-align: center; }
+        #killen, #kontakt { padding-top: 80px; margin-top: -60px; text-align: center; }
         .content-box { background: var(--primary-color); border-radius: 8px; padding: 40px; text-align: left; margin-top: 2rem; border-left: 5px solid var(--accent-color); }
 
         #albtraeume { padding-top: 80px; margin-top: -60px; text-align: center; }
@@ -269,34 +269,6 @@
 
         <div id="case-study-container"></div>
         
-        <!-- Career Section (Now always visible) -->
-        <section id="karriere">
-            <h2>Karriere bei Albtraum KI-ller</h2>
-            <p>Sie sind ein KI-Experte oder möchten einer werden? Senden Sie uns Ihre Initiativbewerbung!</p>
-            <div class="form-container">
-               <form action="https://formspree.io/f/mpwryvjg" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="career-name">Ihr Name:</label>
-                        <input type="text" id="career-name" name="career_name" placeholder="Ihr Vorname Nachname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="career-email">Ihre E-Mail-Adresse:</label>
-                        <input type="email" id="career-email" name="career_email" placeholder="ihre@email.de" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="career-message">Ihre Nachricht / Kurzbewerbung:</label>
-                        <textarea id="career-message" name="career_message" placeholder="Beschreiben Sie kurz Ihre Fähigkeiten und warum Sie zu uns passen." required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="career-cv">Lebenslauf hochladen (PDF, optional):</label>
-                        <input type="file" id="career-cv" name="career_cv" accept=".pdf">
-                    </div>
-                    <button type="submit" class="submit-btn">Bewerbung einreichen</button>
-                </form>
-            </div>
-        </section>
-        <!-- End Career Section -->
-
         <!-- Contact Section (Always visible) -->
         <section id="kontakt">
             <h2>Lassen Sie uns Ihren Albtraum eliminieren</h2>
@@ -334,7 +306,7 @@
   <footer>
     <ul class="footer-links">
         <li><a href="#kontakt">Kontakt</a></li>
-        <li><a href="#karriere">Karriere</a></li>
+        <li><a href="karriere.html" target="_blank">Karriere</a></li>
     </ul>
     <p>&copy; 2025 Albtraum KI-ller | Eine Dienstleistung von David Rodriguez Consulting | david.rodriguez@albtraumkiller.de  | <a href="Impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutzerklärung</a></p>
   </footer>
@@ -343,6 +315,9 @@
     <div class="side-toggles">
         <a href="blog.html" target="_blank">
             <button class="side-toggle-btn">BLOG</button>
+        </a>
+        <a href="karriere.html" target="_blank">
+            <button class="side-toggle-btn">KARRIERE</button>
         </a>
         <button id="toggle-podcast" class="side-toggle-btn">PODCAST</button>
     </div>
@@ -455,22 +430,24 @@
 
         // --- Navigation and Scrolling Logic ---
         document.querySelectorAll('.main-nav a, .footer-links a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    e.preventDefault();
-                    closeAllPanels(); // Close any open panels when navigating
-                    
-                    document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-                    // Find the corresponding nav link if it exists
-                    const navLink = document.querySelector(`.nav-links a[href="${targetId}"]`);
-                    if(navLink) navLink.classList.add('active');
-                    
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
+            const targetId = anchor.getAttribute('href');
+            // Only add smooth scroll for internal links
+            if (targetId.startsWith('#')) {
+                anchor.addEventListener('click', function (e) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        closeAllPanels(); // Close any open panels when navigating
+                        
+                        document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+                        
+                        const navLink = document.querySelector(`.nav-links a[href="${targetId}"]`);
+                        if(navLink) navLink.classList.add('active');
+                        
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
         });
         
         const initialHash = window.location.hash;
