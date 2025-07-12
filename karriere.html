@@ -1,163 +1,83 @@
 <!DOCTYPE html>
-
 <html lang="de">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Karriere | Albtraum KI-ller</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <style>
-
         :root {
-
             --bg-color: #121212;
-
             --primary-color: #1a1a1a;
-
             --accent-color: #00BFFF;
-
             --text-color: #E0E0E0;
-
             --text-muted: #A0A0A0;
-
             --border-color: #333;
-
             --glow-color: rgba(0, 191, 255, 0.5);
-
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.7; }
-
         .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
-
         h1, h2 { font-weight: 700; color: #fff; margin-bottom: 1rem; letter-spacing: 1px; }
-
         h1 { font-size: 2.8rem; text-align: center; color: var(--accent-color); margin-bottom: 2rem; }
-
         h2 { font-size: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 8px; margin-bottom: 1.5rem; margin-top: 2rem; }
-
         p { margin-bottom: 1rem; color: var(--text-muted); text-align: center; }
-
         a { color: var(--accent-color); text-decoration: none; transition: color 0.3s ease; }
-
         a:hover { color: #fff; }
-
-       
-
+        
         .page-header {
-
             background-color: var(--primary-color);
-
             padding: 20px 0;
-
             text-align: center;
-
             border-bottom: 1px solid var(--border-color);
-
         }
-
         .page-header a {
-
             color: var(--accent-color);
-
             font-weight: 600;
-
             font-size: 1.2rem;
-
         }
-
 
         .form-container { background: var(--primary-color); padding: 40px; border-radius: 8px; border-top: 5px solid var(--accent-color); margin-top: 2rem; }
-
         .form-group { margin-bottom: 1.5rem; }
-
         label { display: block; margin-bottom: 0.5rem; font-weight: 600; text-align: left; }
-
         textarea, input[type="email"], input[type="text"], input[type="file"] { width: 100%; padding: 15px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 5px; color: var(--text-color); font-family: 'Poppins', sans-serif; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
-
         textarea:focus, input[type="email"]:focus, input[type="text"]:focus, input[type="file"]:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 10px var(--glow-color); }
-
         textarea { min-height: 150px; resize: vertical; }
-
         .submit-btn { display: block; width: 100%; padding: 15px; background: var(--accent-color); color: var(--bg-color); border: none; border-radius: 5px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: background-color 0.3s, transform 0.3s; margin-top: 2rem; }
-
         .submit-btn:hover { background-color: #fff; color: #000; transform: scale(1.02); }
-
     </style>
-
 </head>
-
 <body>
-
     <header class="page-header">
-
         <a href="index.html">← Zurück zur Hauptseite</a>
-
     </header>
 
-
     <main class="container">
-
         <h1>Karriere bei Albtraum KI-ller</h1>
-
         <p>Sie sind ein KI-Experte oder möchten einer werden? Senden Sie uns Ihre Initiativbewerbung!</p>
-
         <div class="form-container">
-
            <form action="https://formspree.io/f/mpwryvjg" method="POST" enctype="multipart/form-data">
-
                 <div class="form-group">
-
                     <label for="career-name">Ihr Name:</label>
-
                     <input type="text" id="career-name" name="career_name" placeholder="Ihr Vorname Nachname" required>
-
                 </div>
-
                 <div class="form-group">
-
                     <label for="career-email">Ihre E-Mail-Adresse:</label>
-
                     <input type="email" id="career-email" name="career_email" placeholder="ihre@email.de" required>
-
                 </div>
-
                 <div class="form-group">
-
                     <label for="career-message">Ihre Nachricht / Kurzbewerbung:</label>
-
                     <textarea id="career-message" name="career_message" placeholder="Beschreiben Sie kurz Ihre Fähigkeiten und warum Sie zu uns passen." required></textarea>
-
                 </div>
-
                 <div class="form-group">
-
                     <label for="career-cv">Lebenslauf hochladen (PDF, optional):</label>
-
                     <input type="file" id="career-cv" name="career_cv" accept=".pdf">
-
                 </div>
-
                 <button type="submit" class="submit-btn">Bewerbung einreichen</button>
-
             </form>
-
         </div>
-
     </main>
-
 </body>
-
 </html>
